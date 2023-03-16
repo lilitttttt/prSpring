@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Добавление нового адреса</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center">
+    <h1>Добавление группы</h1>
+    <form th:action="${'/grupps/add'}" method="post">
+        <select  name="student">
+            <div th:each="el : ${students}">
+                <option th:value="${el.id}" th:text="${el.familia + ' ' + el.name +' '+ el.otch}"></option>
+            </div>
+        </select>
+        <br>
+        <select  name="gruppas">
+            <div th:each="pro : ${gruppas}">
+                <option th:value="${pro.id}" th:text="${pro.nazvanie}"></option>
+            </div>
+        </select>
+        <button type="submit">Добавить студента в группу</button>
+    </form>
+</div>
+
+</body>
+</html>

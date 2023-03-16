@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <title>Посты</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center">
+    <h1>Посты</h1>
+    <h4 style="margin: 5px"><a href="/blog/filter"> Найти статью</a></h4>
+    <h4 style="margin: 5px"><a href="/blog/add"> Добавить статью</a></h4>
+    <table>
+        <div th:each="el : ${posts}">
+            <h5>---------------------------------------------------------</h5>
+            <h4 th:text="${el.getTitle()}" ></h4>
+            <h5 th:text="${el.getAnons()}"></h5>
+            <h5><a th:href="'/blog/' + ${el.id}"> Подробнее </a></h5>
+        </div>
+    </table>
+</div>
+
+</body>
+</html>

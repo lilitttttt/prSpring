@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование поста</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center" th:each="el : ${post}">
+    <h1>Редактирование поста</h1>
+    <form method="post" th:object="${post}">
+        <input th:field="*{title}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${post.getTitle()}" name="title" placeholder="Введите название поста">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('title')}" th:errors="*{title}"></div><br>
+
+        <input th:field="*{anons}" style="width: 250px; height: 40px; margin: 2px; display: list-item" type="text" th:value="${post.getAnons()}" name="anons" placeholder="Введите анос поста">
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('anons')}" th:errors="*{anons}"></div><br>
+
+        <textarea th:field="*{full_text}" style="width: 300px; height: 100px; margin: 2px; display: list-item" name="full_text" placeholder="Введите текст поста" th:text="${post.getFull_text()}"></textarea>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('full_text')}" th:errors="*{full_text}"></div><br>
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+
+</body>
+</html>

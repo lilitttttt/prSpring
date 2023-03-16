@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <title>Поиск поста</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center">
+    <h1>Поиск постов</h1>
+    <form method="post" th:action="${'/blog/filter/result'}">
+        <input type="text" name="title">
+        <button type="submit">Найти</button>
+        <div style="margin: 10px" th:each="el : ${result}">
+            <h5>---------------------------------------------------------</h5>
+            <h4 th:text="${el.title}"></h4>
+            <h5 th:text="${el.anons}"></h5>
+            <h5><a th:href="'/blog/' + ${el.id}"> Подробнее </a></h5>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

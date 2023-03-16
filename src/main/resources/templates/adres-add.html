@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Добавление нового адреса</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center">
+    <h1>Добавление адреса</h1>
+    <form th:action = "${'/adres/add'}" method="post" th:object="${adress}">
+
+        <textarea th:field="*{adres}"style="width: 300px; height: 100px; margin: 2px" name="adres" placeholder="Введите адрес"></textarea><br>
+        <div style="width: 300px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('adres')}" th:errors="*{adres}"></div><br>
+
+        <button type="submit">Добавить адрес</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Добавление студента</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center">
+    <h1>Добавление студента</h1>
+    <form th:action = "${'/student/add'}" method="post" th:object="${student}">
+
+        <input th:field="*{familia}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Familia" placeholder="Введите фамилию"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('familia')}" th:errors="*{familia}"></div><br>
+
+        <input th:field="*{name}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Name" placeholder="Введите имя"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+
+        <input th:field="*{otch}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Otch" placeholder="Введите отчество"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('otch')}" th:errors="*{otch}"></div><br>
+
+        <input th:field="*{grupa}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Grupa" placeholder="Введите группу"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('grupa')}" th:errors="*{grupa}"></div><br>
+
+        <input th:field="*{birthday}" style="width: 250px; height: 40px; margin: 2px" type="date" name="Birthday" placeholder="Введите дату рождения"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div><br>
+
+        <select name="universitys">
+            <div th:each="el : ${university}">
+                <option th:value="${el.id}" th:text="${el.nazvanie}"></option>
+            </div>
+        </select><br>
+
+        <button type="submit"> Добавить студента</button>
+    </form>
+</div>
+
+</body>
+</html>

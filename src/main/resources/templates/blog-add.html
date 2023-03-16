@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Добавление нового поста</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center">
+    <h1>Добавление поста</h1>
+    <form th:action = "${'/blog/add'}" method="post" th:object="${post}">
+
+        <input th:field="*{title}" style="width: 250px; height: 40px; margin: 2px" type="text" name="title" placeholder="Введите назначение поста"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('title')}" th:errors="*{title}"></div><br>
+
+        <input th:field="*{anons}"style="width: 250px; height: 40px; margin: 2px" type="text" name="anons" placeholder="Введите анонс поста"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('anons')}" th:errors="*{anons}"></div><br>
+
+        <textarea th:field="*{full_text}"style="width: 300px; height: 100px; margin: 2px" name="full_text" placeholder="Введите текст поста"></textarea><br>
+        <div style="width: 300px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('full_text')}" th:errors="*{full_text}"></div><br>
+
+        <button type="submit">Добавить статью</button>
+    </form>
+</div>
+
+</body>
+</html>

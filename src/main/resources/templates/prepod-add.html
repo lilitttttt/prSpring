@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Добавление преподавателя</title>
+</head>
+<body>
+
+<div th:insert="blocks/Header"></div>
+
+<div align="center">
+    <h1>Добавление преподавателя</h1>
+    <form th:action = "${'/prepod/add'}" method="post" th:object="${prepod}">
+
+        <input th:field="*{familia}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Familia" placeholder="Введите фамилию"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('familia')}" th:errors="*{familia}"></div><br>
+
+        <input th:field="*{name}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Name" placeholder="Введите имя"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('name')}" th:errors="*{name}"></div><br>
+
+        <input th:field="*{otch}" style="width: 250px; height: 40px; margin: 2px" type="text" name="Otch" placeholder="Введите отчество"><br>
+        <div style="width: 250px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('otch')}" th:errors="*{otch}"></div><br>
+
+        <textarea th:field="*{predmeti}" style="width: 300px; height: 100px; margin: 2px" name="Predmeti" placeholder="Введите предметы"></textarea><br>
+        <div style="width: 300px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('predmeti')}" th:errors="*{predmeti}"></div><br>
+
+        <textarea th:field="*{grafic}" style="width: 300px; height: 100px; margin: 2px" name="Grafic" placeholder="Введите дни работы"></textarea><br>
+        <div style="width: 300px; height: 40px; margin: 2px" th:if="*{#fields.hasErrors('grafic')}" th:errors="*{grafic}"></div><br>
+
+        <button type="submit"> Добавить преподавателя</button>
+    </form>
+</div>
+
+</body>
+</html>
